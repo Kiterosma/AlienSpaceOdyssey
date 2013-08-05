@@ -213,6 +213,7 @@ string Menu::getButtonString(std::string function)
 		return (axis!="Unbound")? axis:button;
 		}
 	}
+	return "Unbound";
 }
 
 void Menu::refreshControlsMenu()
