@@ -18,8 +18,9 @@ list<Entity*> OverheadPlayer::update(float diff)
 {
 	list<Entity*> result;
 
+	orientPlayer();
+
 	Entity::update(diff);
-	sprite.rotate(360.f*diff);
 
 	cooldown -= diff;
 	if(cooldown<0) cooldown = 0;
@@ -126,12 +127,23 @@ void OverheadPlayer::decelerateY()
 
 Projectile* OverheadPlayer::shoot()
 {
-	Vector2f mouse = application->localMouseCoords();
-	Vector2f direction = mouse - getPositionPixels();
-	float angle = std::atan2f(direction.y,direction.x);
+	float angle = angleToMouse();
 	Vector2f offset(.1f*cosf(angle),.1f*sinf(angle)); //laser appears to the side of the player, not on top.
 
 	cooldown += .1f;
 
 	return new Projectile(application, body->GetWorld(), sfmlb2d::B2TOSFVec2f(body->GetPosition())+offset, sfmlb2d::B2TOSFVec2f(body->GetLinearVelocity()),angle, Projectile::Laser);
+}
+
+float OverheadPlayer::angleToMouse()
+{
+	Vector2f mouse = application->localMouseCoords();
+	Vector2f direction = mouse - getPositionPixels();
+	return std::atan2f(direction.y,direction.x);
+}
+
+void OverheadPlayer::orientPlayer()
+{
+	float angle = angleToMouse();
+	rotate((angle/(2*3.1416f))*360);
 }

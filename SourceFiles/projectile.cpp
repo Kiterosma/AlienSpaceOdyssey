@@ -8,7 +8,7 @@ Projectile::Projectile(Application* a, b2World* w, Vector2f pos, Vector2f vel, f
 	deathTimer = 5.f;
 
 	sprite.setOrigin(0,37.f);
-	sprite.rotate((angle/(2*3.1416f))*360);
+	rotate((angle/(2*3.1416f))*360);
 	sprite.scale(.1f,.1f);
 
 	sound.play();

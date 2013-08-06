@@ -2,6 +2,7 @@
 #define PRELOAD_H
 
 #define PIXELS_PER_METER 100.f;
+#define DEG_TO_RAD .01745f;
 
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>

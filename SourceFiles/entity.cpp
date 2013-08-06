@@ -62,7 +62,10 @@ Vector2f Entity::getPositionPixels()
 
 list<Entity*> Entity::update(float diff)
 {
+	float dtr = DEG_TO_RAD;
+
 	sprite.setPosition(getPositionPixels());
+	sprite.setRotation(body->GetAngle()/dtr);
 	return list<Entity*>();
 }
 
@@ -74,4 +77,13 @@ void Entity::accelerateCenter(b2Vec2 force)
 void Entity::idle()
 {
 	//empty by default
+}
+
+/*
+Angle is in degrees.
+*/
+void Entity::rotate(float angle)
+{
+	float dtr = DEG_TO_RAD;
+	body->SetTransform(body->GetPosition(), angle*dtr);
 }

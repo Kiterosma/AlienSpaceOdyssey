@@ -19,6 +19,7 @@ public:
 	virtual list<Entity*> update(float diff);
 	virtual void accelerateCenter(b2Vec2 force);
 	virtual void idle();
+	virtual void rotate(float angle);
 
 	bool despawn;
 

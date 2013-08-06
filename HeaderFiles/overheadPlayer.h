@@ -19,6 +19,8 @@ protected:
 	void decelerateY();
 	Projectile* shoot();
 	virtual void accelerateCenter(b2Vec2 force);
+	virtual float angleToMouse();
+	virtual void orientPlayer();
 
 private:
 
