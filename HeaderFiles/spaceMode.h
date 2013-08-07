@@ -7,6 +7,7 @@
 #include "entity.h"
 #include "overheadPlayer.h"
 #include "asteroid.h"
+#include "entityContactListener.h"
 
 class Application;
 
@@ -27,8 +28,11 @@ private:
 	Entity* player;
 	list<Entity*> entities;
 	b2World* world;
+	EntityContactListener contactListener;
+	float viewZoom;
 
 	void updateEntities(float diff);
+	void zoomView(int mouseWheelTicks);
 
 };
 

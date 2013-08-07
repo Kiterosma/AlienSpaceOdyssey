@@ -20,12 +20,16 @@ public:
 	virtual void accelerateCenter(b2Vec2 force);
 	virtual void idle();
 	virtual void rotate(float angle);
+	virtual void beginContact(void* other);
+	virtual void endContact(void* other);
+	virtual void damage(int amount);
 
 	bool despawn;
 
 protected:
 	Sprite sprite;
 	b2Body* body;
+	int health;
 
 private:
 

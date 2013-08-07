@@ -1,12 +1,13 @@
 #include "spaceMode.h"
 
-SpaceMode::SpaceMode(Application* a):application(a)
+SpaceMode::SpaceMode(Application* a):application(a),viewZoom(1.f)
 {
 	cursor.setTexture(application->Reticle);
 	cursor.setOrigin(50.f,50.f);
 	cursor.scale(.5f,.5f);
 
 	world = new b2World(b2Vec2(0.f,0.f));
+	world->SetContactListener(&contactListener);
 }
 
 SpaceMode::~SpaceMode()
@@ -54,6 +55,8 @@ void SpaceMode::handleEvent(const Event & event)
 		if(event.key.code == Keyboard::Escape)
 			application->removeTop();
 		break;
+	case Event::MouseWheelMoved:
+		zoomView(event.mouseWheel.delta);
 	}
 }
 
@@ -77,11 +80,6 @@ void SpaceMode::update()
 	if(pos.x < 400) pos.x = 400;
 
 	view.setCenter(pos);
-
-	if(Mouse::isButtonPressed(application->controls.getMouseButton("Shoot")))
-	{
-
-	}
 
 	oldFrame = newFrame;
 }
@@ -111,4 +109,14 @@ void SpaceMode::updateEntities(float diff)
 			objects.push_back(*it2);
 		entities.splice(entities.end(),newObjects);
 	}
+}
+
+void SpaceMode::zoomView(int mouseWheelTicks)
+{
+	float targetZoom = -1*((float)mouseWheelTicks)/10 + viewZoom;
+	if(targetZoom>4.f) targetZoom = 4.f;
+	if(targetZoom<.1f) targetZoom = .1f;
+	
+	view.zoom(targetZoom/viewZoom);
+	viewZoom = targetZoom;
 }

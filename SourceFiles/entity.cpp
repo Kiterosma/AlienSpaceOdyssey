@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false)
+Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20)
 {
 	application = a;
 
@@ -10,7 +10,6 @@ Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f p
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.allowSleep = true;
 	bodyDef.linearVelocity.Set(vel.x, vel.y);
 	bodyDef.position.Set(pos.x,pos.y);
 	body = w->CreateBody(&bodyDef);
@@ -86,4 +85,19 @@ void Entity::rotate(float angle)
 {
 	float dtr = DEG_TO_RAD;
 	body->SetTransform(body->GetPosition(), angle*dtr);
+}
+
+void Entity::beginContact(void* other)
+{
+
+}
+
+void Entity::endContact(void* other)
+{
+
+}
+
+void Entity::damage(int amount)
+{
+	health -= amount; //this function will be more complex in the future
 }
