@@ -73,11 +73,13 @@ void SpaceMode::update()
 	updateEntities(diff);
 
 	Vector2f pos = player->getPositionPixels();
+	float yOffset = 300*viewZoom;
+	float xOffset = 400*viewZoom;
 
-	if(pos.y < 300) pos.y = 300;
-	if(pos.y > 4100) pos.y = 4100;
-	if(pos.x > 5600) pos.x = 5600;
-	if(pos.x < 400) pos.x = 400;
+	if(pos.y < yOffset) pos.y = yOffset;
+	if(pos.y > 4500-yOffset) pos.y = 4500-yOffset;
+	if(pos.x > 6000-xOffset) pos.x = 6000-xOffset;
+	if(pos.x < xOffset) pos.x = xOffset;
 
 	view.setCenter(pos);
 
