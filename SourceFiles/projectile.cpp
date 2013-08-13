@@ -12,15 +12,17 @@ Projectile::Projectile(Application* a, b2World* w, Vector2f pos, Vector2f vel, f
 	sprite.setOrigin(0,37.f);
 	sprite.scale(.1f,.1f);
 	rotate((angle/(2*3.1416f))*360);
-	sound.play();
+	//sound.play(); the sound is getting too annoying, uncomment this when we get a better sound effect.
 
 	b2PolygonShape square;
-	square.SetAsBox(261/ppm,23/ppm,b2Vec2(0,0),angle);
+	square.SetAsBox(26.1f/ppm,2.3f/ppm,b2Vec2(0,0),angle);
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &square;
+	fixtureDef.isSensor = true;
 	body->CreateFixture(&fixtureDef);
 	body->SetBullet(true);
+	body->SetUserData(this);
 }
 
 list<Entity*> Projectile::update(float diff)
@@ -36,17 +38,25 @@ list<Entity*> Projectile::update(float diff)
 	return result;
 }
 
-void Projectile::beginConact(void* other)
+void Projectile::beginContact(void* other)
 {
-	if(typeid(other)==typeid(Entity))
+
+	Entity* entity = static_cast<Entity*>(other);
+
+	if(entity)
 	{
-		Entity* entity = static_cast<Entity*>(other);
 		entity->damage(1);
-		deathTimer = -1.f;
 	}
+
+	deathTimer = -1.f;
 }
 
 void Projectile::endContact(void* other)
 {
 
+}
+
+Entity::ID Projectile::getID()
+{
+	return Entity::projectile;
 }

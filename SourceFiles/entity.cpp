@@ -13,6 +13,12 @@ Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f p
 	bodyDef.linearVelocity.Set(vel.x, vel.y);
 	bodyDef.position.Set(pos.x,pos.y);
 	body = w->CreateBody(&bodyDef);
+
+}
+
+Entity::~Entity()
+{
+	if(body && body->GetWorld()) body->GetWorld()->DestroyBody(body);
 }
 
 void Entity::draw()
@@ -100,4 +106,9 @@ void Entity::endContact(void* other)
 void Entity::damage(int amount)
 {
 	health -= amount; //this function will be more complex in the future
+}
+
+Entity::ID Entity::getID()
+{
+	return Entity::default;
 }

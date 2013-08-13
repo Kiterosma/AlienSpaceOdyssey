@@ -8,6 +8,10 @@
 class Entity: public GameObject
 {
 public:
+
+	enum ID{default, overheadplayer, asteroid, projectile};
+
+	virtual ~Entity();
 	Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel);
 	virtual void draw();
 	virtual void setTexture(Texture & t);
@@ -23,6 +27,7 @@ public:
 	virtual void beginContact(void* other);
 	virtual void endContact(void* other);
 	virtual void damage(int amount);
+	virtual ID getID();
 
 	bool despawn;
 

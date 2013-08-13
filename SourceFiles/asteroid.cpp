@@ -29,7 +29,8 @@ Asteroid::Asteroid(Application* a, b2World* w, Vector2f pos, Vector2f vel):Entit
 	fixtureDef.density = 1.f; //density subject to change
 	body->CreateFixture(&fixtureDef);
 
-	body->SetAngularVelocity(.349f);
+	body->SetAngularVelocity(20.f);
+	body->SetUserData(this);
 }
 
 list<Entity*> Asteroid::update(float diff)
@@ -37,4 +38,14 @@ list<Entity*> Asteroid::update(float diff)
 	list<Entity*> result = Entity::update(diff);
 
 	return result;
+}
+
+void Asteroid::beginContact(void* other)
+{
+	
+}
+
+void Asteroid::endContact(void* other)
+{
+
 }

@@ -6,12 +6,13 @@ OverheadPlayer::OverheadPlayer(Application* a, b2World* w, Vector2f pos):Entity(
 
 	b2CircleShape circle;
 	circle.m_p.Set(0,0);
-	circle.m_radius = 43.f/PIXELS_PER_METER; //.43f
+	circle.m_radius = 30.f/PIXELS_PER_METER;
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &circle;
 	fixtureDef.density = 1.f; //density subject to change
 	body->CreateFixture(&fixtureDef);
+	body->SetUserData(this);
 }
 
 list<Entity*> OverheadPlayer::update(float diff)
@@ -128,7 +129,7 @@ void OverheadPlayer::decelerateY()
 Projectile* OverheadPlayer::shoot()
 {
 	float angle = angleToMouse();
-	Vector2f offset(.1f*cosf(angle),.1f*sinf(angle)); //laser appears to the side of the player, not on top.
+	Vector2f offset(.6f*cosf(angle),.6f*sinf(angle)); //laser appears to the side of the player, not on top.
 
 	cooldown += .1f;
 
@@ -146,4 +147,19 @@ void OverheadPlayer::orientPlayer()
 {
 	float angle = angleToMouse();
 	rotate((angle/(2*3.1416f))*360);
+}
+
+Entity::ID OverheadPlayer::getID()
+{
+	return Entity::overheadplayer;
+}
+
+void OverheadPlayer::beginContact(void* other)
+{
+
+}
+
+void OverheadPlayer::endContact(void* other)
+{
+
 }

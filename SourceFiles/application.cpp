@@ -10,7 +10,7 @@ Application::~Application()
 {
 	while(!elems.empty())
 	{
-		delete elems.top();
+//		delete elems.top(); this line seems to be redundant
 		elems.pop();
 	}
 }
