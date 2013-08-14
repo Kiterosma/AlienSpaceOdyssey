@@ -1,7 +1,8 @@
 #ifndef ENTITYCONTACTLISTENER_H
 #define ENTITYCONTACTLISTENER_H
 
-#include <Box2D\Box2D.h>
+#include <typeinfo>
+#include "projectile.h"
 
 class EntityContactListener: public b2ContactListener
 {

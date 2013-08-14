@@ -1,7 +1,6 @@
 #ifndef OVERHEADPLAYER_H
 #define OVERHEADPLAYER_H
 
-#include "entity.h"
 #include "projectile.h"
 
 class OverheadPlayer: public Entity

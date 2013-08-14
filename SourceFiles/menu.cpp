@@ -180,7 +180,7 @@ void Menu::processFunc(GameObject::Function func)
 		application->addToStack(new Menu(application), Controls);
 		break;
 	case GameObject::NewGame:
-		application->addToStack(new SpaceMode(application), InGame);
+		application->addToStack(new SpaceMode(application), InGame); //this is the only reference to SpaceMode in this class. Possible #include optimization?
 		break;
 	case GameObject::ControlSet:
 		objects.push_back(new TextBox(application, application->MessageBox, "Press any key/button to set its function.", Vector2f(300.f, 250.f), GameObject::MessageBox));

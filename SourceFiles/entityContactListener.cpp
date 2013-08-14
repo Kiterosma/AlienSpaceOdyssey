@@ -1,8 +1,4 @@
 #include "entityContactListener.h"
-#include <typeinfo>
-#include "projectile.h"
-
-
 
 void EntityContactListener::BeginContact(b2Contact* contact)
 {

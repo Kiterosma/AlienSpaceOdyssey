@@ -1,14 +1,11 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "application.h"
-#include "element.h"
 #include "guiButton.h"
 #include "background.h"
-#include "textbox.h"
-#include "controlsConfig.h"
 #include "spaceMode.h"
 
+class SpaceMode;
 class Application;
 
 class Menu: public Element{

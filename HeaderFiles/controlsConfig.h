@@ -1,8 +1,11 @@
 #ifndef CONTROLSCONFIG_H
 #define CONTROLSCONFIG_H
 
-#include "preLoad.h"
+//#include "preLoad.h"
 #include <unordered_map>
+#include <SFML\Graphics.hpp>
+#include <fstream>
+#include <sstream>
 
 class Application;
 

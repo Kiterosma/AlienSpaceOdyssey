@@ -1,9 +1,10 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "preLoad.h"
+//#include "preLoad.h"
 #include "element.h"
-#include "controlsConfig.h"
+#include "SFML\Audio.hpp"
+#include <stack>
 
 using namespace sf;
 using namespace std;

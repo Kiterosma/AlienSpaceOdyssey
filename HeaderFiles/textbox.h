@@ -1,7 +1,6 @@
 #ifndef TEXTBOX_H
 #define TEXTBOX_H
 
-#include "gameObject.h"
 #include "application.h"
 
 class TextBox: public GameObject

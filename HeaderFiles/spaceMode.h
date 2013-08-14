@@ -1,10 +1,7 @@
 #ifndef SPACEMODE_H
 #define SPACEMODE_H
 
-#include "element.h"
-#include "application.h"
 #include "background.h"
-#include "entity.h"
 #include "overheadPlayer.h"
 #include "asteroid.h"
 #include "entityContactListener.h"

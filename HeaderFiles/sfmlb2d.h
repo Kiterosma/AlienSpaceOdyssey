@@ -1,7 +1,9 @@
 #ifndef SFMLB2D_H
 #define SFMLB2D_H
 
-#include "preLoad.h"
+//#include "preLoad.h"
+#include <Box2D\Box2D.h>
+#include <SFML\Graphics.hpp>
 
 namespace sfmlb2d
 {

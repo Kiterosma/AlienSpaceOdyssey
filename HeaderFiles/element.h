@@ -1,7 +1,7 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "preLoad.h"
+//#include "preLoad.h"
 #include "GameObject.h"
 
 using namespace sf;

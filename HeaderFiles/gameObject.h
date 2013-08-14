@@ -1,8 +1,8 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "preLoad.h"
-
+//#include "preLoad.h"
+#include "controlsConfig.h"
 using namespace sf;
 
 class Application;

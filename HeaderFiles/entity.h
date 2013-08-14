@@ -1,9 +1,11 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "gameObject.h"
 #include "application.h"
 #include "sfmlb2d.h"
+
+#define PIXELS_PER_METER 100.f;
+#define DEG_TO_RAD .01745f;
 
 class Entity: public GameObject
 {
