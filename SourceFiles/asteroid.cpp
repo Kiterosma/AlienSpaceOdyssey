@@ -1,4 +1,4 @@
-#include "asteroid.h"
+#include "Asteroid.h"
 
 Asteroid::Asteroid(Application* a, b2World* w, Vector2f pos, Vector2f vel):Entity(a, w, a->Asteroid,IntRect(0,0,238,174), pos, vel)
 {
@@ -26,7 +26,7 @@ Asteroid::Asteroid(Application* a, b2World* w, Vector2f pos, Vector2f vel):Entit
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &polygonShape;
-	fixtureDef.density = 1.f; //density subject to change
+	fixtureDef.density = 5.f; //density subject to change
 	body->CreateFixture(&fixtureDef);
 
 	body->SetAngularVelocity(20.f);
@@ -48,4 +48,9 @@ void Asteroid::beginContact(void* other)
 void Asteroid::endContact(void* other)
 {
 
+}
+
+Entity::ID Asteroid::getID()
+{
+	return Entity::asteroid;
 }

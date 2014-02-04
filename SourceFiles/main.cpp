@@ -1,5 +1,4 @@
-#include "application.h"
-#include "menu.h"
+#include "Menu.h"
 //#include "vld.h"
 
 using namespace sf;

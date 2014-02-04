@@ -1,14 +1,15 @@
 #ifndef SPACEMODE_H
 #define SPACEMODE_H
 
-#include "background.h"
-#include "overheadPlayer.h"
-#include "asteroid.h"
-#include "entityContactListener.h"
+#include "Background.h"
+#include "OverheadPlayer.h"
+#include "Asteroid.h"
+#include "EntityContactListener.h"
+#include "GameMode.h"
 
 class Application;
 
-class SpaceMode: public Element
+class SpaceMode: public GameMode
 {
 public:
 	SpaceMode(Application* a);
@@ -16,21 +17,8 @@ public:
 	virtual void initialize(Screen screen);
 	virtual void draw();
 	virtual void handleEvent(const Event & event);
-	virtual void update();
-
-private:
-	Application* application;
-	Time newFrame;
-	Time oldFrame;
-	Entity* player;
-	list<Entity*> entities;
-	b2World* world;
-	EntityContactListener contactListener;
-	float viewZoom;
-
-	void updateEntities(float diff);
-	void zoomView(int mouseWheelTicks);
-
+	virtual void preUpdate();
+	virtual void postUpdate();
 };
 
 #endif

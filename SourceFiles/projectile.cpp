@@ -1,4 +1,4 @@
-#include "projectile.h"
+#include "Projectile.h"
 
 /*
 Angle for contructor is in radians
@@ -45,10 +45,17 @@ void Projectile::beginContact(void* other)
 
 	if(entity)
 	{
-		entity->damage(1);
-	}
+		Entity::ID id = entity->getID();
 
-	deathTimer = -1.f;
+		switch(id)
+		{
+		case Entity::asteroid:
+			entity->damage(1);
+			despawn = true;
+		case Entity::default:;
+		default:;
+		}
+	}
 }
 
 void Projectile::endContact(void* other)

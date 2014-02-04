@@ -1,4 +1,4 @@
-#include "textbox.h"
+#include "Textbox.h"
 
 TextBox::TextBox(Application* a, Texture & t, string s, Vector2f position, Function func):application(a), function(func)
 {

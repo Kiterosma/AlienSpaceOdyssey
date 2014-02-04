@@ -1,16 +1,17 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+
 //#include "preLoad.h"
-#include "element.h"
 #include "SFML\Audio.hpp"
 #include <stack>
+#include "Element.h"
 
 using namespace sf;
 using namespace std;
 
 class Menu;
-//class GameObject;
+class GameObject;
 
 class Application{
 
@@ -44,6 +45,8 @@ public:
 
 private:
 	stack<Element*> elems;
+	Element* secondInStack;
+	bool transparentElement;
 
 	void update();
 	void toggleFullscreen();

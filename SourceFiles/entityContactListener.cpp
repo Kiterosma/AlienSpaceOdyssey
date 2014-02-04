@@ -1,4 +1,4 @@
-#include "entityContactListener.h"
+#include "EntityContactListener.h"
 
 void EntityContactListener::BeginContact(b2Contact* contact)
 {

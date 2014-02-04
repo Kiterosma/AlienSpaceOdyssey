@@ -1,7 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "application.h"
+#include "Application.h"
 #include "sfmlb2d.h"
 
 #define PIXELS_PER_METER 100.f;

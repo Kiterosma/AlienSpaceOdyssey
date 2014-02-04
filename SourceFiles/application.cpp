@@ -1,8 +1,10 @@
-#include "application.h"
+#include "Application.h"
 
 Application::Application():controls(this, ControlsConfig::KeyboardMouse)
 {
 	fullscreen = false;
+	transparentElement = false;
+	secondInStack = NULL;
 	initializeWindow();
 }
 
@@ -10,7 +12,7 @@ Application::~Application()
 {
 	while(!elems.empty())
 	{
-//		delete elems.top(); this line seems to be redundant
+	//delete elems.top(); this line seems to be redundant
 		elems.pop();
 	}
 }
@@ -67,7 +69,11 @@ void Application::run()
 		if(window.isOpen())
 		{
 			if(elems.top()!=NULL)
+			{
+				if(transparentElement)
+					secondInStack->draw();
 				elems.top()->draw();
+			}
 
 		  window.display();
 		}
@@ -119,11 +125,21 @@ void Application::toggleFullscreen()
 void Application::addToStack(Element* elem, Element::Screen screen)
 {
 	elem->initialize(screen);
+	if(elem->isTransparent())
+	{
+		secondInStack = elems.top();
+		transparentElement = true;
+	}
 	elems.push(elem);
 }
 
 void Application::removeTop()
 {
+	if(elems.top()->isTransparent())
+	{
+		transparentElement = false;
+		secondInStack = NULL;
+	}
 	elems.pop();
 }
 

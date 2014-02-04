@@ -1,4 +1,4 @@
-#include "guiButton.h"
+#include "GuiButton.h"
 
 static const float scaleUpFactor = 1.25f;
 static const float scaleDownFactor = 0.8f;

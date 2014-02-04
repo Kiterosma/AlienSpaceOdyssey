@@ -1,4 +1,4 @@
-#include "controlsConfig.h"
+#include "ControlsConfig.h"
 
 using namespace std;
 

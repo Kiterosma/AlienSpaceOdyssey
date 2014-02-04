@@ -1,7 +1,7 @@
 #ifndef ASTEROID_H
 #define ASTEROID_H
 
-#include "entity.h"
+#include "Entity.h"
 
 class Asteroid: public Entity
 {
@@ -10,6 +10,7 @@ public:
 	virtual list<Entity*> update(float diff);
 	virtual void beginContact(void* other);
 	virtual void endContact(void* other);
+	virtual ID getID();
 
 protected:
 

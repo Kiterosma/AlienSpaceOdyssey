@@ -2,7 +2,7 @@
 #define ENTITYCONTACTLISTENER_H
 
 #include <typeinfo>
-#include "projectile.h"
+#include "Projectile.h"
 
 class EntityContactListener: public b2ContactListener
 {

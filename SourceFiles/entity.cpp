@@ -1,4 +1,4 @@
-#include "entity.h"
+#include "Entity.h"
 
 Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20)
 {

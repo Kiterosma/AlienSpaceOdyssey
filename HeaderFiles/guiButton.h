@@ -1,7 +1,7 @@
 #ifndef GUIBUTTON_H
 #define GUIBUTTON_H
 
-#include "textbox.h"
+#include "Textbox.h"
 
 class GUIButton: public GameObject{
 

@@ -1,9 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "guiButton.h"
-#include "background.h"
-#include "spaceMode.h"
+#include "GuiButton.h"
+#include "Background.h"
+#include "SpaceMode.h"
 
 class SpaceMode;
 class Application;

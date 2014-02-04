@@ -1,4 +1,4 @@
-#include "overheadPlayer.h"
+#include "OverheadPlayer.h"
 
 OverheadPlayer::OverheadPlayer(Application* a, b2World* w, Vector2f pos):Entity(a, w, a->UFO, IntRect(2,3,45,45), pos, Vector2f(0,0)),speedLimit(4),cooldown(0.f)
 {
@@ -129,7 +129,7 @@ void OverheadPlayer::decelerateY()
 Projectile* OverheadPlayer::shoot()
 {
 	float angle = angleToMouse();
-	Vector2f offset(.6f*cosf(angle),.6f*sinf(angle)); //laser appears to the side of the player, not on top.
+	Vector2f offset(.2f*cosf(angle),.2f*sinf(angle)); //laser appears to the side of the player, not on top.
 
 	cooldown += .1f;
 

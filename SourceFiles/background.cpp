@@ -1,4 +1,4 @@
-#include "background.h"
+#include "Background.h"
 
 Background::Background(Application* a, Texture & t, View & v, bool scale):view(v)
 {
