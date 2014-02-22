@@ -14,7 +14,6 @@ public:
 	GameMode(Application* a, b2Vec2 gravity);
 	virtual ~GameMode();
 	virtual void initialize(Screen screen)=0;
-	virtual void draw();
 	virtual void handleEvent(const Event & event)=0;
 	virtual void preUpdate()=0;
 	virtual void postUpdate()=0;

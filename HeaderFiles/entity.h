@@ -26,8 +26,8 @@ public:
 	virtual void accelerateCenter(b2Vec2 force);
 	virtual void idle();
 	virtual void rotate(float angle);
-	virtual void beginContact(void* other);
-	virtual void endContact(void* other);
+	virtual void beginContact(void* other)=0;
+	virtual void endContact(void* other)=0;
 	virtual void damage(int amount);
 	virtual ID getID();
 

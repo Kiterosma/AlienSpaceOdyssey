@@ -15,7 +15,6 @@ public:
 	SpaceMode(Application* a);
 	virtual ~SpaceMode();
 	virtual void initialize(Screen screen);
-	virtual void draw();
 	virtual void handleEvent(const Event & event);
 	virtual void preUpdate();
 	virtual void postUpdate();

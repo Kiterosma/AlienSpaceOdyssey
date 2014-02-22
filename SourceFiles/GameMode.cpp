@@ -1,5 +1,10 @@
 #include "GameMode.h"
 
+GameMode::~GameMode()
+{
+
+}
+
 GameMode::GameMode(Application* a, b2Vec2 gravity):Element(a),viewZoom(1.f),paused(false)
 {
 	world = new b2World(gravity);

@@ -34,19 +34,6 @@ void SpaceMode::initialize(Screen screen)
 
 }
 
-void SpaceMode::draw()
-{
-	application->window.setView(view);
-
-	list<GameObject*>::iterator it = objects.begin();
-	while(it!=objects.end())
-	{
-		(*it)->draw();
-		it++;
-	}
-	application->window.draw(cursor);
-}
-
 void SpaceMode::handleEvent(const Event & event)
 {
 	switch(event.type)

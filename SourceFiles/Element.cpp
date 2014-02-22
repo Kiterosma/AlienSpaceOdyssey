@@ -1,7 +1,7 @@
 #include "Element.h"
 #include "Application.h"
 
-Element::Element(Application* a)
+Element::Element(Application* a):application(a)
 {
 
 }
