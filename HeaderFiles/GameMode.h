@@ -19,7 +19,6 @@ public:
 	virtual void postUpdate()=0;
 
 protected:
-	Application* application;
 	Time newFrame;
 	Time oldFrame;
 	Entity* player;

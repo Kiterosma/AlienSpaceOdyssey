@@ -25,6 +25,11 @@ Projectile::Projectile(Application* a, b2World* w, Vector2f pos, Vector2f vel, f
 	body->SetUserData(this);
 }
 
+Projectile::~Projectile()
+{
+
+}
+
 list<Entity*> Projectile::update(float diff)
 {
 	list<Entity*> result = Entity::update(diff);
@@ -51,7 +56,7 @@ void Projectile::beginContact(void* other)
 		{
 		case Entity::asteroid:
 			entity->damage(1);
-			despawn = true;
+			doDraw = false;
 		case Entity::default:;
 		default:;
 		}
@@ -60,7 +65,20 @@ void Projectile::beginContact(void* other)
 
 void Projectile::endContact(void* other)
 {
+	Entity* entity = static_cast<Entity*>(other);
 
+	if(entity)
+	{
+		Entity::ID id = entity->getID();
+
+		switch(id)
+		{
+		case Entity::asteroid:
+			despawn = true;
+		case Entity::default:;
+		default:;
+		}
+	}
 }
 
 Entity::ID Projectile::getID()

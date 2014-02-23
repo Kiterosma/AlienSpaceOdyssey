@@ -37,6 +37,7 @@ protected:
 	Sprite sprite;
 	b2Body* body;
 	int health;
+	bool doDraw;
 
 private:
 

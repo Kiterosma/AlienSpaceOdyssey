@@ -2,7 +2,7 @@
 
 GameMode::~GameMode()
 {
-
+	delete world;
 }
 
 GameMode::GameMode(Application* a, b2Vec2 gravity):Element(a),viewZoom(1.f),paused(false)
@@ -44,7 +44,7 @@ void GameMode::updateEntities(float diff)
 			objects.remove(*it1);
 			delete *it1;
 			*it1=NULL;
-
+			
 			list<Entity*>::iterator temp = it1;
 			temp++;
 			entities.erase(it1);

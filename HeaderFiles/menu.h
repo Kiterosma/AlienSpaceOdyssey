@@ -27,7 +27,6 @@ private:
 	string getButtonString(std::string function);
 	void refreshControlsMenu();
 
-	Application* application;
 	GameObject* highlighted;
 	ControlsConfig* controls;
 	GUIButton* currentButton;

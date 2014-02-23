@@ -1,6 +1,7 @@
 #include "Entity.h"
+#include <iostream>
 
-Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20)
+Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20),doDraw(true)
 {
 	application = a;
 
@@ -19,11 +20,12 @@ Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f p
 Entity::~Entity()
 {
 	if(body && body->GetWorld()) body->GetWorld()->DestroyBody(body);
+	cout<<"GOODBYE"<<endl;
 }
 
 void Entity::draw()
 {
-	application->window.draw(sprite);
+	if(doDraw) application->window.draw(sprite);
 }
 
 void Entity::setTexture(Texture & t)

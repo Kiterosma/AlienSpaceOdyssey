@@ -5,9 +5,6 @@ SpaceMode::SpaceMode(Application* a):GameMode(a,b2Vec2(0.f,0.f))
 	cursor.setTexture(application->Reticle);
 	cursor.setOrigin(50.f,50.f);
 	cursor.scale(.5f,.5f);
-
-	world = new b2World(b2Vec2(0.f,0.f));
-	world->SetContactListener(&contactListener);
 }
 
 SpaceMode::~SpaceMode()
