@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include <iostream>
 
-Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20),doDraw(true)
+Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20),doDraw(true),canJump(false),jumpCooldown(0)
 {
 	application = a;
 
@@ -20,7 +20,6 @@ Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f p
 Entity::~Entity()
 {
 	if(body && body->GetWorld()) body->GetWorld()->DestroyBody(body);
-	cout<<"GOODBYE"<<endl;
 }
 
 void Entity::draw()
@@ -113,4 +112,15 @@ void Entity::damage(int amount)
 Entity::ID Entity::getID()
 {
 	return Entity::default;
+}
+
+void Entity::contactGround()
+{
+	if(jumpCooldown==0)
+		canJump = true;
+}
+
+void Entity::leaveGround()
+{
+	canJump = false;
 }

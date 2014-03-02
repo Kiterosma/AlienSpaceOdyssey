@@ -35,7 +35,7 @@ public:
 	string WorkingDirectory;
 
 	Texture Blank, MainMenu, ControlsMenu, GUIButton1, BackButton, MessageBox, Starfield, UFO, LaserSprite, Reticle, Cursor,
-			Asteroid;
+			Asteroid, World1_1, Mario;
 
 	SoundBuffer OUGH;
 

@@ -84,6 +84,10 @@ void Menu::handleEvent(const Event & event)
 			currentButton = NULL;
 			controlSelection = false;
 		}
+		else if(event.key.code == Keyboard::P)
+		{
+			application->addToStack(new PlatformerMode(application), InGame);
+		}
 		break;
 	}
 }
@@ -93,15 +97,16 @@ void Menu::update()
 	cursor.setPosition(application->localMouseCoords());
 }
 
-void Menu::buildMainMenu()
+void Menu::buildMainMenu() //Why are the buttons squished in the x direction?
 {
 	font = application->Rounded;
 
 	view.setViewport(FloatRect(0,0,1,1));
+	view.reset(FloatRect(0,0,1200,900));
 
-	objects.push_back(new Background(application, application->MainMenu, view, true));
-	objects.push_back(new GUIButton(application, application->GUIButton1, Vector2f(345.f, 350.f), Text("New Game",font,34), GameObject::NewGame, NULL));
-	objects.push_back(new GUIButton(application, application->GUIButton1, Vector2f(345.f, 500.f), Text("Options",font,34), GameObject::Controls, NULL));
+	objects.push_back(new Background(application, application->MainMenu, view));
+	objects.push_back(new GUIButton(application, application->GUIButton1, Vector2f(450.f, 350.f), Text("New Game",font,34), GameObject::NewGame, NULL));
+	objects.push_back(new GUIButton(application, application->GUIButton1, Vector2f(450.f, 500.f), Text("Options",font,34), GameObject::Controls, NULL));
 }
 
 void Menu::buildControlsMenu()
@@ -112,8 +117,9 @@ void Menu::buildControlsMenu()
 	font = application->Rounded;
 
 	view.setViewport(FloatRect(0,0,1,1));
+	view.reset(FloatRect(0,0,800*768/600,768));
 
-	objects.push_back(new Background(application, application->ControlsMenu, view, true));
+	objects.push_back(new Background(application, application->ControlsMenu, view));
 
 	objects.push_back(new TextBox(application, application->Blank, getButtonString("Move Up") , Vector2f(500.f, 10.f), GameObject::None));
 	objects.push_back(new GUIButton(application, application->Blank, Vector2f(10.f, 10.f), Text("Move Up",font,30), GameObject::ControlSet, (TextBox*)objects.back()));
@@ -127,11 +133,14 @@ void Menu::buildControlsMenu()
 	objects.push_back(new TextBox(application, application->Blank, getButtonString("Move Right"), Vector2f(500.f, 190.f), GameObject::None));
 	objects.push_back(new GUIButton(application, application->Blank, Vector2f(10.f, 190.f), Text("Move Right",font,30), GameObject::ControlSet, (TextBox*)objects.back()));
 	
-	objects.push_back(new TextBox(application, application->Blank, getButtonString("Shoot"), Vector2f(500.f, 250.f), GameObject::None));
-	objects.push_back(new GUIButton(application, application->Blank, Vector2f(10.f, 250.f), Text("Shoot",font,30), GameObject::ControlSet, (TextBox*)objects.back()));
+	objects.push_back(new TextBox(application, application->Blank, getButtonString("Jump"), Vector2f(500.f, 250.f), GameObject::None));
+	objects.push_back(new GUIButton(application, application->Blank, Vector2f(10.f, 250.f), Text("Jump",font,30), GameObject::ControlSet, (TextBox*)objects.back()));
 
-	objects.push_back(new GUIButton(application, application->BackButton, Vector2f(30.f, 900.f), Text(), GameObject::Back, NULL));
-	objects.push_back(new GUIButton(application, application->MessageBox, Vector2f(750.f, 900.f), Text("Save Changes",font,30), GameObject::SaveChanges, NULL));
+	objects.push_back(new TextBox(application, application->Blank, getButtonString("Shoot"), Vector2f(500.f, 310.f), GameObject::None));
+	objects.push_back(new GUIButton(application, application->Blank, Vector2f(10.f, 310.f), Text("Shoot",font,30), GameObject::ControlSet, (TextBox*)objects.back()));
+
+	objects.push_back(new GUIButton(application, application->BackButton, Vector2f(30.f, 500.f), Text(), GameObject::Back, NULL));
+	objects.push_back(new GUIButton(application, application->MessageBox, Vector2f(750.f, 500.f), Text("Save Changes",font,30), GameObject::SaveChanges, NULL));
 
 }
 

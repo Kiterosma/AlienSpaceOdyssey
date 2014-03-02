@@ -11,7 +11,7 @@ class Entity: public GameObject
 {
 public:
 
-	enum ID{default, overheadplayer, asteroid, projectile};
+	enum ID{default, overheadplayer, platformerplayer, asteroid, projectile};
 
 	virtual ~Entity();
 	Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel);
@@ -30,6 +30,8 @@ public:
 	virtual void endContact(void* other)=0;
 	virtual void damage(int amount);
 	virtual ID getID();
+	virtual void contactGround();
+	virtual void leaveGround();
 
 	bool despawn;
 
@@ -38,6 +40,8 @@ protected:
 	b2Body* body;
 	int health;
 	bool doDraw;
+	bool canJump;
+	float jumpCooldown;
 
 private:
 

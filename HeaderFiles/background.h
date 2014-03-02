@@ -6,7 +6,7 @@
 class Background: public GameObject{
 
 public:
-	Background(Application* a, Texture & t, View & v, bool scale);
+	Background(Application* a, Texture & t, View & v);
 	virtual void draw();
 	virtual void setTexture(Texture & t);
 
@@ -14,7 +14,7 @@ private:
 	Sprite sprite;
 	View view;
 
-	void scaleToView();
+	void scaleToView(float height);
 
 };
 

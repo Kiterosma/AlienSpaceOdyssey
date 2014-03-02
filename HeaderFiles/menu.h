@@ -4,6 +4,7 @@
 #include "GuiButton.h"
 #include "Background.h"
 #include "SpaceMode.h"
+#include "PlatformerMode.h"
 
 class SpaceMode;
 class Application;

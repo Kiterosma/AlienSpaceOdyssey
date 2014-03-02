@@ -27,6 +27,7 @@ protected:
 	EntityContactListener contactListener;
 	float viewZoom;
 	bool paused;
+	b2Body* terrain;
 
 	virtual void updateEntities(float diff);
 	virtual void zoomView(int mouseWheelTicks);

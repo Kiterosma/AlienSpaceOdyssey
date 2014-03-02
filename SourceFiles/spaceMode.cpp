@@ -25,10 +25,9 @@ void SpaceMode::initialize(Screen screen)
 	entities.push_back(player);
 	entities.push_back(asteroid1);
 
-	objects.push_back(new Background(application, application->Starfield, view, false));
+	objects.push_back(new Background(application, application->Starfield, view));
 	objects.push_back(asteroid1);
 	objects.push_back(player);
-
 }
 
 void SpaceMode::handleEvent(const Event & event)
@@ -61,7 +60,7 @@ void SpaceMode::postUpdate()
 
 	if(pos.y < yOffset) pos.y = yOffset;
 	if(pos.y > 4500-yOffset) pos.y = 4500-yOffset;
-	if(pos.x > 6000-xOffset) pos.x = 6000-xOffset;	
+	if(pos.x > 6000-xOffset) pos.x = 6000-xOffset;
 	if(pos.x < xOffset) pos.x = xOffset;
 
 	view.setCenter(pos);

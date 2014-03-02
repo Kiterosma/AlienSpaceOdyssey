@@ -46,6 +46,10 @@ bool Application::initialize(Element* elem)
 	result = result && Reticle.loadFromFile(WorkingDirectory+"Textures\\Reticle.png");
 	result = result && Cursor.loadFromFile(WorkingDirectory+"Textures\\Cursor.png");
 	result = result && Asteroid.loadFromFile(WorkingDirectory+"Textures\\Asteroid.png");
+	result = result && World1_1.loadFromFile(WorkingDirectory+"Textures\\Mario1-1.png");
+	result = result && Mario.loadFromFile(WorkingDirectory+"Textures\\smb_mario_sheet.png");
+
+	Cursor.setSmooth(true);
 
 	//Load sounds
 	result = result && OUGH.loadFromFile(WorkingDirectory+"Sounds\\OUGH.ogg");

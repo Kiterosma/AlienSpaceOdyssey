@@ -1,10 +1,10 @@
 #include "Background.h"
 
-Background::Background(Application* a, Texture & t, View & v, bool scale):view(v)
+Background::Background(Application* a, Texture & t, View & v):view(v)
 {
 	application = a;
 	sprite.setTexture(t);
-	if(scale) scaleToView();
+	sprite.setPosition(0,0);
 }
 
 void Background::draw()
@@ -17,11 +17,7 @@ void Background::setTexture(Texture & t)
 	sprite.setTexture(t);
 }
 
-void Background::scaleToView()
+void Background::scaleToView(float height)
 {
-	float spriteWidth = sprite.getGlobalBounds().width;
-	float spriteHeight = sprite.getGlobalBounds().height;
-	float viewWidth = view.getSize().x;
-	float viewHeight = view.getSize().y;
-	sprite.scale(viewWidth/spriteWidth, viewHeight/spriteHeight);
+	
 }

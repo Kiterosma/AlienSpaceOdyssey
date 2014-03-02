@@ -372,6 +372,7 @@ void ControlsConfig::revertToDefault()
 	setKey("Move Down", sf::Keyboard::S);
 	setKey("Move Left", sf::Keyboard::A);
 	setKey("Move Right", sf::Keyboard::D);
+	setKey("Jump", sf::Keyboard::Space);
 	setMouseButton("Shoot", sf::Mouse::Left);
 }
 
