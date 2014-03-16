@@ -42,18 +42,12 @@ void EntityContactListener::EndContact(b2Contact* contact)
 
 	if(entityA)
 	{
-		if((int)fixtureDataA == -1)
-			entityA->leaveGround();
-		else
-			entityA->endContact(bodyDataB);
+		entityA->endContact(bodyDataB);
 	}
 
 	if(entityB)
 	{
-		if((int)fixtureDataB == -1)
-			entityB->leaveGround();
-		else
-			entityB->endContact(bodyDataA);
+		entityB->endContact(bodyDataA);
 	}
 }
 

@@ -31,7 +31,7 @@ public:
 	virtual void damage(int amount);
 	virtual ID getID();
 	virtual void contactGround();
-	virtual void leaveGround();
+	virtual void jump(float speed, float cooldown);
 
 	bool despawn;
 

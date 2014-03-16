@@ -1,7 +1,7 @@
 #include "PlatformerMode.h"
 #include <iostream>
 
-PlatformerMode::PlatformerMode(Application* a):GameMode(a,b2Vec2(0.f,0.f))
+PlatformerMode::PlatformerMode(Application* a):GameMode(a,b2Vec2(0.f,9))
 {
 	cursor.setTexture(application->Reticle);
 	cursor.setOrigin(50.f,50.f);
@@ -20,21 +20,22 @@ void PlatformerMode::initialize(Screen screen)
 	//Define terrain
 	b2BodyDef terrainDef;
 	terrainDef.type = b2_staticBody;
-	terrainDef.position.Set(0,226.5/ppm);
+	terrainDef.position.Set(0, 232/ppm);
 	terrain = world->CreateBody(&terrainDef);
+	terrain->SetUserData(this);
 
 	b2PolygonShape shape1;
-	shape1.SetAsBox(1105/ppm, 11/ppm);
-	shape1.m_centroid = b2Vec2(552.5/ppm, 5.5/ppm);
+	shape1.SetAsBox(552.5f/ppm, 8/ppm, b2Vec2(552.5f/ppm, -8/ppm), 0);
+
 	b2FixtureDef fixture1;
 	fixture1.shape = &shape1;
+
 	terrain->CreateFixture(&fixture1);
-	terrain->SetUserData(this);
 
 	view.setViewport(FloatRect(0,0,1,1));
 	view.reset(FloatRect(0,0,800*232/600,232));
 	
-	player = new /*PlatformerPlayer*/OverheadPlayer(application, world, Vector2f(100/ppm, 221/ppm));
+	player = new PlatformerPlayer(application, world, Vector2f(100/ppm, 199/ppm));
 	entities.push_back(player);
 
 	objects.push_back(new Background(application, application->World1_1, view));
@@ -60,7 +61,7 @@ void PlatformerMode::handleEvent(const Event & event)
 
 void PlatformerMode::preUpdate()
 {
-	cout<<player->getPositionPixels().x<<","<<player->getPositionPixels().y<<endl;
+	
 }
 
 void PlatformerMode::postUpdate()

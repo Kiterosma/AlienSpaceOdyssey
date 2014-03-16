@@ -72,6 +72,8 @@ list<Entity*> Entity::update(float diff)
 
 	sprite.setPosition(getPositionPixels());
 	sprite.setRotation(body->GetAngle()/dtr);
+
+	jumpCooldown-=diff;
 	return list<Entity*>();
 }
 
@@ -120,7 +122,15 @@ void Entity::contactGround()
 		canJump = true;
 }
 
-void Entity::leaveGround()
+void Entity::jump(float speed, float cooldown)
 {
-	canJump = false;
+	if(canJump)
+	{
+		float impulse = body->GetMass()*speed;
+		body->ApplyLinearImpulse( b2Vec2(0, -impulse), body->GetWorldCenter());
+
+		jumpCooldown += cooldown;
+		canJump = false;
+		cout<<"I'm jumping!"<<endl;
+	}
 }
