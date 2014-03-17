@@ -1,4 +1,5 @@
 #include "EntityContactListener.h"
+#include <iostream>
 
 void EntityContactListener::BeginContact(b2Contact* contact)
 {
@@ -14,7 +15,9 @@ void EntityContactListener::BeginContact(b2Contact* contact)
 	if(entityA)
 	{
 		if((int)fixtureDataA == -1)
+		{
 			entityA->contactGround();
+		}
 		else
 			entityA->beginContact(bodyDataB);
 	}
@@ -22,7 +25,9 @@ void EntityContactListener::BeginContact(b2Contact* contact)
 	if(entityB)
 	{
 		if((int)fixtureDataB == -1)
+		{
 			entityB->contactGround();
+		}
 		else
 			entityB->beginContact(bodyDataA);
 	}
@@ -42,12 +47,18 @@ void EntityContactListener::EndContact(b2Contact* contact)
 
 	if(entityA)
 	{
-		entityA->endContact(bodyDataB);
+		if((int)fixtureDataA == -1)
+			entityA->leaveGround();
+		else
+			entityA->endContact(bodyDataB);
 	}
 
 	if(entityB)
 	{
-		entityB->endContact(bodyDataA);
+		if((int)fixtureDataB == -1)
+			entityB->leaveGround();
+		else
+			entityB->endContact(bodyDataA);
 	}
 }
 

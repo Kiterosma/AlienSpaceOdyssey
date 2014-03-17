@@ -31,6 +31,7 @@ public:
 	virtual void damage(int amount);
 	virtual ID getID();
 	virtual void contactGround();
+	virtual void leaveGround();
 	virtual void jump(float speed, float cooldown);
 
 	bool despawn;
@@ -40,7 +41,7 @@ protected:
 	b2Body* body;
 	int health;
 	bool doDraw;
-	bool canJump;
+	bool onGround;
 	float jumpCooldown;
 
 private:

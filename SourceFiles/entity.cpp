@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include <iostream>
 
-Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20),doDraw(true),canJump(false),jumpCooldown(0)
+Entity::Entity(Application* a, b2World* w, Texture & t, IntRect rect, Vector2f pos, Vector2f vel):despawn(false),health(20),doDraw(true),onGround(false),jumpCooldown(0)
 {
 	application = a;
 
@@ -74,6 +74,8 @@ list<Entity*> Entity::update(float diff)
 	sprite.setRotation(body->GetAngle()/dtr);
 
 	jumpCooldown-=diff;
+	if(jumpCooldown<0) jumpCooldown=0;
+
 	return list<Entity*>();
 }
 
@@ -118,19 +120,21 @@ Entity::ID Entity::getID()
 
 void Entity::contactGround()
 {
-	if(jumpCooldown==0)
-		canJump = true;
+	onGround = true;
+}
+
+void Entity::leaveGround()
+{
+	onGround = false;
 }
 
 void Entity::jump(float speed, float cooldown)
 {
-	if(canJump)
+	if(onGround && jumpCooldown==0)
 	{
 		float impulse = body->GetMass()*speed;
 		body->ApplyLinearImpulse( b2Vec2(0, -impulse), body->GetWorldCenter());
 
 		jumpCooldown += cooldown;
-		canJump = false;
-		cout<<"I'm jumping!"<<endl;
 	}
 }

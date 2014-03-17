@@ -35,7 +35,7 @@ void PlatformerMode::initialize(Screen screen)
 	view.setViewport(FloatRect(0,0,1,1));
 	view.reset(FloatRect(0,0,800*232/600,232));
 	
-	player = new PlatformerPlayer(application, world, Vector2f(100/ppm, 199/ppm));
+	player = new PlatformerPlayer(application, world, Vector2f(100/ppm, 180/ppm));
 	entities.push_back(player);
 
 	objects.push_back(new Background(application, application->World1_1, view));
